@@ -202,7 +202,7 @@ export default function MedAISystem() {
               <label style={{ fontSize: "10px", color: "#667788", marginBottom: "5px", display: "block" }}>REASON</label>
               <input value={reason} onChange={e => setReason(e.target.value)} disabled={running} placeholder="e.g. severe joint pain" />
             </div>
-            <button onClick={running ? null : run} disabled={running} style={{ width: "100%", padding: "12px", border: "none", borderRadius: "8px", background: running ? "#1a2a3a" : "linear-gradient(135deg, #1565c0, #6a1b9a)", color: running ? "#445566" : "#fff", fontSize: "13px", fontWeight: "700", fontFamily: "inherit", cursor: running ? "not-allowed" : "pointer", transition: "all 0.3s" }}>
+            <button onClick={run} disabled={running} style={{ width: "100%", padding: "12px", border: "none", borderRadius: "8px", background: running ? "#1a2a3a" : "linear-gradient(135deg, #1565c0, #6a1b9a)", color: running ? "#445566" : "#fff", fontSize: "13px", fontWeight: "700", fontFamily: "inherit", cursor: running ? "not-allowed" : "pointer", transition: "all 0.3s" }}>
               {running ? "⏳ AGENTS WORKING..." : "▶ RUN SAFETY CHECK"}
             </button>
           </div>
