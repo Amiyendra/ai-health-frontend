@@ -11,7 +11,7 @@ const PATIENTS = [
 const DRUGS = ["Ibuprofen", "Aspirin", "Metformin"];
 
 // ── Call Local Python Server (Which calls AWS Bedrock) ──
-async function consultBedrockAgent(patientId, drug, reason) {
+async function consultBedrockAgent(patientId:string, drug:string, reason:string) {
   try {
     const url = `https://ai-health-agent-8axv.onrender.com/api/consult?patient_id=${encodeURIComponent(patientId)}&drug=${encodeURIComponent(drug)}&reason=${encodeURIComponent(reason)}`;
     const response = await fetch(url);
@@ -24,7 +24,7 @@ async function consultBedrockAgent(patientId, drug, reason) {
 }
 
 // ── Delay helper & Sub-components ──
-const delay = ms => new Promise(r => setTimeout(r, ms));
+const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
 function LogLine({ item, visible }) {
   return (
@@ -90,7 +90,7 @@ export default function MedAISystem() {
   
   const logsEndRef = useRef(null);
 
-  const addLog = (text, icon, color) => {
+  const addLog = (text: string, icon?: string, color?: string) => {
     const time = new Date().toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit", second: "2-digit" });
     setLogs(prev => {
       const next = [...prev, { text, icon, color, time }];
