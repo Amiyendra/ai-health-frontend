@@ -26,7 +26,7 @@ async function consultBedrockAgent(patientId:string, drug:string, reason:string)
 // ── Delay helper & Sub-components ──
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
-function LogLine({ item, visible }) {
+function LogLine({ item, visible }: { item: any; visible: boolean }) {
   return (
     <div style={{
       opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(8px)",
