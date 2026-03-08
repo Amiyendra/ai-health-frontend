@@ -43,7 +43,7 @@ function LogLine({ item, visible }: { item: any; visible: boolean }) {
   );
 }
 
-function AgentCard({ agent, active, done, result }) {
+function AgentCard({ agent, active, done, result }: any) {
   return (
     <div style={{
       border: `1px solid ${active ? agent.color : done ? "#2a3a2a" : "#1e2a35"}`, borderRadius: "10px", padding: "16px",
@@ -73,23 +73,24 @@ function AgentCard({ agent, active, done, result }) {
 
 // ── Main App ──
 export default function MedAISystem() {
-  const [patientId, setPatientId] = useState("P-102");
-  const [drug, setDrug] = useState("Ibuprofen");
-  const [reason, setReason] = useState("severe joint pain");
-  const [running, setRunning] = useState(false);
-  const [stage, setStage] = useState(0);
-  const [logs, setLogs] = useState([]);
-  const [visibleLogs, setVisibleLogs] = useState([]);
-  
-  const [finalVerdict, setFinalVerdict] = useState(null);
-  const [ehrActive, setEhrActive] = useState(false);
-  const [ehrDone, setEhrDone] = useState(false);
-  const [resActive, setResActive] = useState(false);
-  const [resDone, setResDone] = useState(false);
-  const [supActive, setSupActive] = useState(false);
-  
-  const logsEndRef = useRef(null);
+  const [patientId, setPatientId] = useState<string>("P-102");
+  const [drug, setDrug] = useState<string>("Ibuprofen");
+  const [reason, setReason] = useState<string>("severe joint pain");
+  const [running, setRunning] = useState<boolean>(false);
+  const [stage, setStage] = useState<number>(0);
 
+  const [logs, setLogs] = useState<any[]>([]);
+  const [visibleLogs, setVisibleLogs] = useState<number[]>([]);
+
+  const [finalVerdict, setFinalVerdict] = useState<string | null>(null);
+
+  const [ehrActive, setEhrActive] = useState<boolean>(false);
+  const [ehrDone, setEhrDone] = useState<boolean>(false);
+  const [resActive, setResActive] = useState<boolean>(false);
+  const [resDone, setResDone] = useState<boolean>(false);
+  const [supActive, setSupActive] = useState<boolean>(false);
+
+  const logsEndRef = useRef<HTMLDivElement | null>(null);
   const addLog = (text: string, icon?: string, color?: string) => {
     const time = new Date().toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit", second: "2-digit" });
     setLogs(prev => {
